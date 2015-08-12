@@ -26,16 +26,13 @@ for p,a in dataRequest.items():
 		del a['name']
 		daysAhead = timedelta(days=int(a['daysAhead']))
 		del a['daysAhead']
-		print(p)
-		print(a)
 		datatimeStart = date.today()
 		datatimeEnd= datatimeStart + daysAhead
 		
 		timeStart = str(datatimeStart.year) +'-' + str(datatimeStart.month) + '-'+ str(datatimeStart.day) +'T'+'00\x3A00\x3A00' + 'Z'
 		timeEnd = str(datatimeEnd.year) +'-' + str(datatimeEnd.month) + '-'+ str(datatimeEnd.day) +'T'+'00\x3A00\x3A00' + 'Z'
 		
-		print(timeStart)
-		print(timeEnd)
+		#print('Los datos se descargaran con los siguientes fechas: \n', 'Comienzo:' +timeStart + '\n', 'Final:' +timeEnd + '\n') 
 		
 		a['time_start']= timeStart
 		a['time_end']= timeEnd
@@ -43,9 +40,13 @@ for p,a in dataRequest.items():
 		filepath = NetcdfDownloaderHome+'/data/' +filename
 		with open(filepath, 'wb') as f:
 			f.truncate()
-			print ("Downloading " + filename)
+			print ("Descargando: ",filename)
+			print ('Fuente:', p)
+			print ('Con los parametros: ')
+			for i,j in a.items():
+				print(i,':',j )
 			response = requests.get(p, params=a,stream=True)
-			print('status code',response.status_code)
+			print('Codigo de estado:',response.status_code)
 			if(response.status_code == 200):
 				total_length = response.headers.get('content-length')
 				if total_length is None: # no content length header

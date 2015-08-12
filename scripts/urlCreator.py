@@ -27,6 +27,5 @@ class UrlMaker:
 									l.append(var.text)
 									values[var.tag]=l
 				querys[url]=values
-		print(querys) 
 		return querys
 

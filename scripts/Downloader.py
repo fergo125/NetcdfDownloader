@@ -15,7 +15,7 @@ import os
 #de archivos que no está funcionando bien.
 
 
-NetcdfDownloaderHome= os.environ['NETCDFAUTODOWNLOADERHOME']
+NetcdfDownloaderHome= os.environ['NETCDFDOWNLOADERHOME']
 catalog = NetcdfDownloaderHome+'/DataSets_Catalogs.xml'
 urlMaker = urlCreator.UrlMaker(catalog)
 dataRequest = urlMaker.createUrl() 
@@ -60,7 +60,7 @@ for p,a in dataRequest.items():
 						done = int(50 * dl / total_length)
 						sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)))
 						sys.stdout.flush()
-				print('File succesfully downloaded: ', filename)
+				print('Archivo descargado satisfactoriamente: ', filename)
 			else:
-				print('Error downloading file: ',  filename)
+				print('Error descargando archivo ',  filename)
 		

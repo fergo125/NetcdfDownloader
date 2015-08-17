@@ -5,6 +5,7 @@
 		 <source link = "http://oos.soest.hawaii.edu/thredds/ncss/grid/hioos/model/wav/ww3/WaveWatch_III_Global_Wave_Model_best.ncd"> 
 			<var name="Altura significativa de la ola">Thgt</var> 
 			<var name="Periodo del pico de la ola">Tper</var> 
+			<var name="Direccion del pico de la ola">Tdir</var>
 			<disableLLSubset>on</disableLLSubset> 
 			<disableProjSubset>on</disableProjSubset> 
 			<horizStride>1</horizStride> 
@@ -22,6 +23,7 @@
 		 <source link = "http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best"> 
 			<var name="Componente u de la velocidad del viento">u-component_of_wind_height_above_ground</var> 
 			<var name="Componente v de la velocidad del viento">v-component_of_wind_height_above_ground</var> 
+			<var name="Presion atmosferica al nivel del mar">Pressure_reduced_to_MSL_msl</var>
 			<disableLLSubset>on</disableLLSubset> 
 			<disableProjSubset>on</disableProjSubset> 
 			<accept>netcdf</accept> 

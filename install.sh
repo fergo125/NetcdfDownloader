@@ -7,6 +7,8 @@ fi
 cp -rf ../NetcdfDownloader /opt
 mkdir /opt/NetcdfDownloader/data
 chmod 777 /opt/NetcdfDownloader/data 
+chmod 777 /opt/NetcdfDownloader/scripts/Downloader.py
+chmod 777 /opt/NetcdfDownloader/scripts/scriptCopernicus.sh
 if [ -z "$NETCDFDOWNLOADERHOME"]; then 
 	echo "export NETCDFDOWNLOADERHOME=/opt/NetcdfDownloader" >>  /home/miocimar/.bashrc
 	export NETCDFDOWNLOADERHOME=/opt/NetcdfDownloader

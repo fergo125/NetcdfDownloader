@@ -14,8 +14,14 @@ if [ -z "$NETCDFDOWNLOADERHOME"]; then
 	export NETCDFDOWNLOADERHOME=/opt/NetcdfDownloader
 	echo "Variable de ambiente creada"
 fi
+
 touch tempCronScript
-echo "01 00 * * * ${NETCDFDOWNLOADERHOME}/runDownloader.sh"	>> tempCronScript
+touch /opt/NetcdfDownloader/log
+chmod 777 /opt/NetcdfDownloader/log
+echo "00 3 * * * sh ${NETCDFDOWNLOADERHOME}/runDownloader.sh &> log">> tempCronScript
 crontab tempCronScript
+rm -fr "$NETCDFDOWNLOADERHOME"/.git
+rm -fr "$NETCDFDOWNLOADERHOME"/.gitignore
 rm -f tempCronScript
+cp ncdfdownloader /usr/bin
 echo "Instalacion completada satisfactoriamente"

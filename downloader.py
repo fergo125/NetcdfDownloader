@@ -4,9 +4,13 @@ from datetime import datetime as dt
 from datetime import timedelta
 import json
 import logging
+import logging.config
 from pprint import pprint
 from getfile import get_file
 from motu_lib import motu_api,utils_cas,utils_log
+
+LOG_CFG_FILE = 'motu_lib/etc/log.ini'
+log=None
 
 def file_downloader_procesor(datasets):	
 	for d in datasets:
@@ -16,12 +20,17 @@ def file_downloader_procesor(datasets):
 			d["params"]["date_max"] = time_period[1]
 			d["params"]["date_min"] = time_period[0]
 			download_muto( d["params"])  
-		if d["method"] == "https":
-			d["params"]["time_start"] = time_period[1]
-			d["params"]["time_end"] = time_period[0]
-			get_file(d["source"],d["file_output"],d["params"])  
+		if d["method"] == "http":
+			d["params"]["time_end"] = time_period[1]
+			d["params"]["time_start"] = time_period[0]
+			get_file(d["source"],d["params"],d["file_output"])  
 
 def download_muto(params_dict):
+	logging.addLevelName(utils_log.TRACE_LEVEL, 'TRACE')
+	print(os.path.abspath(LOG_CFG_FILE))
+	logging.config.fileConfig(os.path.abspath(LOG_CFG_FILE)) 
+	log = logging.getLogger("motu-client-python")
+	logging.getLogger().setLevel(logging.INFO)
 	params_object = objectview(params_dict)
 	params_object.auth_mode = motu_api.AUTHENTICATION_MODE_CAS
 	params_object.proxy_server = None
@@ -35,7 +44,7 @@ def download_muto(params_dict):
 	params_object.console_mode = None
 	params_object.describe = None
 	params_object.sync= None
-	params_object.log_level = utils_log.TRACE_LEVEL
+	params_object.log_level = None
 	params_object.size = None
 	motu_api.execute_request(params_object)
 

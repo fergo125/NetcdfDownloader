@@ -5,10 +5,13 @@ import requests.exceptions
 
 
 def get_file(url, download_params, output_file):
+	print(url)
 	with open(os.path.abspath(output_file), 'wb') as f:
 		f.truncate()
 		response = requests.get(url, params=download_params,stream=True)
+		print(response.text)
 		if(response.status_code == 200):
+			print("Downloading data from: " + url)
 			total_length = response.headers.get('content-length')
 			if total_length is None: # no content length header
 				f.write(response.content)

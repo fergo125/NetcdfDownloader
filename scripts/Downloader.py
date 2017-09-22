@@ -11,12 +11,12 @@ import os
 
 #Recordatorio para Fernando: Aun falta ver como se itera en el diccionario para 
 #poder ejecutar todas las consultas a los webservices, ademas hay que ver porque 
-#no está funcionando bien la descarga de datos, al parecer hay algo con la descarga
-#de archivos que no está funcionando bien.
+#no esta funcionando bien la descarga de datos, al parecer hay algo con la descarga
+#de archivos que no esta funcionando bien.
 
 
-NetcdfDownloaderHome= os.environ['NETCDFDOWNLOADERHOME']
-catalog = NetcdfDownloaderHome+'/DataSets_Catalogs.xml'
+#NetcdfDownloaderHome= os.environ['NETCDFDOWNLOADERHOME']
+catalog = 'DataSets_Catalogs.xml'
 urlMaker = urlCreator.UrlMaker(catalog)
 dataRequest = urlMaker.createUrl() 
 
@@ -37,14 +37,16 @@ for p,a in dataRequest.items():
 		a['time_start']= timeStart
 		a['time_end']= timeEnd
 		
-		filepath = NetcdfDownloaderHome+'/data/' +filename
+		filepath = os.path.abspath('okeanos/data/' +filename)
+
 		with open(filepath, 'wb') as f:
 			f.truncate()
 			print ("Descargando: ",filename)
 			print ('Fuente:', p)
 			print ('Con los parametros: ')
-			for i,j in a.items():
-				print(i,':',j )
+			# for i,j in a.items():
+			# 	print(i,':',j )
+			print(a)
 			response = requests.get(p, params=a,stream=True)
 			print('Codigo de estado:',response.status_code)
 			if(response.status_code == 200):

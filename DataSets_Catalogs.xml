@@ -1,23 +1,5 @@
 <downloadData> 
 	<dataset>
-		 <name>Pacioos ww3</name> 
-		 <daysAhead>5</daysAhead>
-		 <source link = "http://oos.soest.hawaii.edu/thredds/ncss/grid/hioos/model/wav/ww3/WaveWatch_III_Global_Wave_Model_best.ncd"> 
-			<var name="Altura significativa de la ola">Thgt</var> 
-			<var name="Periodo del pico de la ola">Tper</var> 
-			<var name="Direccion del pico de la ola">Tdir</var>
-			<disableLLSubset>on</disableLLSubset> 
-			<disableProjSubset>on</disableProjSubset> 
-			<horizStride>1</horizStride> 
-			<timeStride>6</timeStride> 
-			<accept>netcdf</accept> 
-			<north>90</north> 
-			<west>130</west> 
-			<east>330</east> 
-			<south>-90</south>
-		</source> 
-	</dataset> 
-	<dataset>
 		 <name>Unidata</name> 
 		 <daysAhead>5</daysAhead>
 		 <source link = "http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best"> 

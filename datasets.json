@@ -30,11 +30,9 @@
 			"west":"130",
 			"east":"330",
 			"south":"-90",
-			"var":["Significant_height_of_wind_waves_surface",
-				"Significant_height_of_combined_wind_waves_and_swell_surface",
+			"var":["Significant_height_of_combined_wind_waves_and_swell_surface",
 				"Primary_wave_mean_period_surface",
-				"Mean_period_of_wind_waves_surface",
-				"Direction_of_wind_waves_surface"
+				"Primary_wave_direction_surface"
 			]
 			}
 		},

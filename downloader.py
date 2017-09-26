@@ -9,7 +9,8 @@ from pprint import pprint
 from getfile import get_file
 from motu_lib import motu_api,utils_cas,utils_log
 
-LOG_CFG_FILE = 'motu_lib/etc/log.ini'
+
+LOG_CFG_FILE = './motu_lib/etc/log.ini'
 log=None
 
 def file_downloader_procesor(datasets):	
@@ -30,8 +31,10 @@ def file_downloader_procesor(datasets):
 
 def download_muto(params_dict):
 	logging.addLevelName(utils_log.TRACE_LEVEL, 'TRACE')
-	print(os.path.abspath(LOG_CFG_FILE))
-	logging.config.fileConfig(os.path.abspath(LOG_CFG_FILE)) 
+	dir = os.path.dirname(__file__)
+	fileconfig = os.path.join(dir, LOG_CFG_FILE)
+	print(fileconfig)
+	logging.config.fileConfig(fileconfig) 
 	log = logging.getLogger("motu-client-python")
 	logging.getLogger().setLevel(logging.INFO)
 	params_object = objectview(params_dict)

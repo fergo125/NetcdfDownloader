@@ -1,6 +1,6 @@
 [	{
 	"method":"http",
-	"file_output":"wind.nc",
+	"file_output":"okeanos/data/wind.nc",
 	"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best",
 	"days_ahead":"7",
 	"params":{
@@ -19,7 +19,7 @@
 	
 	{
 		"method":"http",
-		"file_output":"ocean.nc",
+		"file_output":"okeanos/data/ocean.nc",
 		"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best",
 		"days_ahead":"7",
 		"params":{
@@ -52,8 +52,8 @@
 			"depth_max":"0.4942",
 			"depth_min":"0.494",
 			"out_dir":"./okeanos/data",
-			"out_name":"coopernicus.nc",
-			"outname":"coopernicus.nc",
+			"out_name":"copernicus.nc",
+			"outname":"copernicus.nc",
 			"variable":["thetao", "uo", "vo", "so"]
 			}
 		}

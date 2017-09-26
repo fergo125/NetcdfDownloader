@@ -7,6 +7,7 @@ import requests.exceptions
 def get_file(url, download_params, output_file):
 	print(url)
 	with open(os.path.abspath(output_file), 'wb') as f:
+		print(os.path.abspath(output_file))
 		f.truncate()
 		print("Making request with: ", download_params)
 		response = requests.get(url, params=download_params,stream=True)

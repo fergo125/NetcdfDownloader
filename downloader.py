@@ -14,7 +14,10 @@ log=None
 
 def file_downloader_procesor(datasets):	
 	for d in datasets:
-		time_period = calculate_time_period(int(d['days_ahead']))
+		if "days_offset" in d:
+			time_period = calculate_time_period(int(d['days_ahead']), int(d['days_offset']) )
+		else:
+			time_period = calculate_time_period(int(d['days_ahead']))
 		del d['days_ahead']
 		if d["method"] == "motu":
 			d["params"]["date_max"] = time_period[1]
@@ -52,9 +55,9 @@ class objectview(object):
     def __init__(self, d):
         self.__dict__ = d
 
-def calculate_time_period(days):
+def calculate_time_period(days,offset=0):
 	daysahead = timedelta(days=days)
-	start = dt.today()
+	start = dt.today() + offset
 	end = start + daysahead
 	return start.strftime("%Y-%m-%d %I:%M:%S"), end.strftime("%Y-%m-%d %I:%M:%S")
 def json_loads_byteified(json_text):

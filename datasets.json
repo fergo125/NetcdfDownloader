@@ -4,7 +4,6 @@
 	"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best",
 	"days_ahead":"7",
 	"params":{
-		"timeStride":"2",
 		"disableLLSubset":"on",
 		"disableProjSubset":"on",
 		"accept":"netcdf",
@@ -20,11 +19,10 @@
 	
 	{
 		"method":"http",
-		"file_output":"okeanos/data/ocean0.nc",
+		"file_output":"okeanos/data/ocean.nc",
 		"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best",
-		"days_ahead":"3",
+		"days_ahead":"7",
 		"params":{
-			"timeStride":"2",
 			"disableLLSubset":"on",
 			"disableProjSubset":"on",
 			"accept":"netcdf",
@@ -38,26 +36,6 @@
 			]
 			}
 		},
-		{
-			"method":"http",
-			"file_output":"okeanos/data/ocean1.nc",
-			"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best",
-			"days_offset":"3",
-			"days_ahead":"7",
-			"params":{
-				"disableLLSubset":"on",
-				"disableProjSubset":"on",
-				"accept":"netcdf",
-				"north":"90",
-				"west":"130",
-				"east":"330",
-				"south":"-90",
-				"var":["Significant_height_of_combined_wind_waves_and_swell_surface",
-					"Primary_wave_mean_period_surface",
-					"Primary_wave_direction_surface"
-				]
-				}
-			},
 	{
 		"method":"motu",
 		"days_ahead":"7",

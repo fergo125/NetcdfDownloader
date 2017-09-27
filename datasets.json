@@ -5,13 +5,14 @@
 	"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best",
 	"days_ahead":"7",
 	"params":{
+		"timeStride":"2",
 		"disableLLSubset":"on",
 		"disableProjSubset":"on",
 		"accept":"netcdf",
-		"north":"90",
-		"west":"130",
-		"east":"330",
-		"south":"-90",
+		"north":"30",
+		"west":"250",
+		"east":"300",
+		"south":"0",
 		"var":["u-component_of_wind_height_above_ground",
 			"v-component_of_wind_height_above_ground"
 		]
@@ -20,9 +21,9 @@
 	
 	{
 		"method":"http",
-		"file_output":"ocean0.nc",
+		"file_output":"okeanos/data/ocean0.nc",
 		"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best",
-		"days_ahead":"5",
+		"days_ahead":"3",
 		"params":{
 			"timeStride":"2",
 			"disableLLSubset":"on",
@@ -40,9 +41,9 @@
 	},
 		{
 			"method":"http",
-			"file_output":"ocean1.nc",
+			"file_output":"okeanos/data/ocean1.nc",
 			"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best",
-			"days_offset":"5",
+			"days_offset":"3",
 			"days_ahead":"7",
 			"params":{
 				"disableLLSubset":"on",

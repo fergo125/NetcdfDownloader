@@ -1,4 +1,5 @@
-[	{
+[	
+	{
 	"method":"http",
 	"file_output":"okeanos/data/wind.nc",
 	"source":"http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best",

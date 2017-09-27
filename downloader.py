@@ -60,7 +60,7 @@ class objectview(object):
 
 def calculate_time_period(days,offset=0):
 	daysahead = timedelta(days=days)
-	start = dt.today() + offset
+	start = dt.today() + timedelta(offset)
 	end = start + daysahead
 	return start.strftime("%Y-%m-%d %I:%M:%S"), end.strftime("%Y-%m-%d %I:%M:%S")
 def json_loads_byteified(json_text):

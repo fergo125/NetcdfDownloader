@@ -1,7 +1,7 @@
 import os
 import csv
 import argparse
-
+import datetime
 def main():
 	parser = argparse.ArgumentParser(description='csv columns file')
 	parser.add_argument("-d1","--directory1", type=str)
@@ -25,23 +25,33 @@ def merge_files(csv_file1,csv_file2,csv_file_output):
 	csv1 = csv.DictReader(csvfile1)
 	csv2 = csv.DictReader(csvfile2)
 	field_names= []
-	field_names +=csv1.fieldnames
-	# temp_fields = csv2.fieldnames
-	# temp_fields.remove("time")
-	# field_names += temp_fields
-	field_names += csv2.fieldnames
-
-	print(field_names)
+	fields = []
+	field_names.append("time")
+	fields +=csv1.fieldnames
+	fields.remove("time")
+	fields +=csv2.fieldnames
+	fields.remove("time")
+	field_names += fields
 	csv_out = csv.DictWriter(csv_out_file,fieldnames=field_names,lineterminator='\n')
 	csv_out.writeheader()
 	print(field_names)
-	for row1,row2 in zip(csv1,csv2):
+	rows1 = delete_entries(csv1)
+	rows2 = delete_entries(csv2)
+	print("len of rows:",len(rows1),len(rows2))
+	for row1,row2 in zip(rows1,rows2):
 		row_out = dict()
 		for k,i in row2.items():
 			row_out[k] = i
 		for k,i in row1.items():
 			row_out[k] = i
-		print(row_out)
 		csv_out.writerow(row_out)
+
+def delete_entries(rows):
+	result = []
+	for row in rows:
+		if datetime.datetime.strptime(row["time"],"%Y-%m-%d %H:%M:%S").hour % 6 == 0:
+			result.append(row)
+	return result
+
 if __name__ == "__main__":
 	main()

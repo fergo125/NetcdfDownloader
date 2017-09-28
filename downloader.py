@@ -10,7 +10,7 @@ from getfile import get_file
 from motu_lib import motu_api,utils_cas,utils_log
 
 
-LOG_CFG_FILE = './motu_lib/etc/log.ini'
+LOG_CFG_FILE = '/motu_lib/etc/log.ini'
 log=None
 
 def file_downloader_procesor(datasets):	

@@ -91,7 +91,7 @@ def main():
 	parser.add_argument("-d","--datasets",type=str)
 	args = parser.parse_args()
 	print(args.datasets)
-	with open(os.path.normpath(args.datasets)) as datasets_file:
+	with open(os.path.abspath(args.datasets)) as datasets_file:
 		datasets = json_loads_byteified(datasets_file.read())
 		file_downloader_procesor(datasets)
 

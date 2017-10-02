@@ -13,7 +13,7 @@ def main():
 		reader = csv.DictReader(csv_files)
 		for row in reader:
 			print("Reporting:",row['csv_file'])
-			r.post(args.endpoint,json=row)
-
+			response = r.post(args.endpoint,json=row)
+			print(response.text)
 if __name__ == "__main__":
 	main()

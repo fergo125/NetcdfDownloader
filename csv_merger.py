@@ -34,10 +34,8 @@ def merge_files(csv_file1,csv_file2,csv_file_output):
 	field_names += fields
 	csv_out = csv.DictWriter(csv_out_file,fieldnames=field_names,lineterminator='\n')
 	csv_out.writeheader()
-	print(field_names)
 	rows1 = delete_entries(csv1)
 	rows2 = delete_entries(csv2)
-	print("len of rows:",len(rows1),len(rows2))
 	for row1,row2 in zip(rows1,rows2):
 		row_out = dict()
 		for k,i in row2.items():

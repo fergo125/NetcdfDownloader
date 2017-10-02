@@ -10,7 +10,7 @@ from getfile import get_file
 from motu_lib import motu_api,utils_cas,utils_log
 
 
-LOG_CFG_FILE = '/motu_lib/etc/log.ini'
+LOG_CFG_FILE = 'motu_lib/etc/log.ini'
 log=None
 
 def file_downloader_procesor(datasets):	
@@ -60,7 +60,7 @@ class objectview(object):
 
 def calculate_time_period(days,offset=0):
 	daysahead = timedelta(days=days)
-	start = dt.today() + offset
+	start = dt.today() + timedelta(days =offset)
 	end = start + daysahead
 	return start.strftime("%Y-%m-%d %I:%M:%S"), end.strftime("%Y-%m-%d %I:%M:%S")
 def json_loads_byteified(json_text):

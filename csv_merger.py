@@ -48,7 +48,6 @@ def delete_entries(rows):
 	result = []
 	for row in rows:
 		if datetime.datetime.strptime(row["time"],"%Y-%m-%d %H:%M:%S").hour % 6 == 0:
-			row["time"] += " Z"
 			result.append(row)
 	return result
 

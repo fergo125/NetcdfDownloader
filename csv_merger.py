@@ -47,7 +47,8 @@ def merge_files(csv_file1,csv_file2,csv_file_output):
 def delete_entries(rows):
 	result = []
 	for row in rows:
-		if datetime.datetime.strptime(row["time"],"%Y-%m-%d %H:%M:%S Z").hour % 6 == 0:
+		if datetime.datetime.strptime(row["time"],"%Y-%m-%d %H:%M:%S").hour % 6 == 0:
+			row["time"] += " Z"
 			result.append(row)
 	return result
 
